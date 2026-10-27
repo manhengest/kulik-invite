@@ -1,6 +1,6 @@
 # KULIK SYSTEM Event Landing
 
-Private Grand Opening invitation page for November 3, 2026. One job: collect Invitation Requests from Guests.
+Private Grand Opening invitation page for November 5, 2026. One job: collect Invitation Requests from Guests.
 
 ## Language
 

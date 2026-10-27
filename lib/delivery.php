@@ -13,7 +13,7 @@ function kulik_deliver_mail(array $config, array $request): string
         return 'pending';
     }
 
-    $subject = 'New KULIK SYSTEM Event RSVP — November 3';
+    $subject = 'New KULIK SYSTEM Event RSVP — November 5';
     $lines = [
         'Full Name: ' . ($request['full_name'] ?? ''),
         'Email: ' . ($request['email'] ?? ''),
@@ -57,7 +57,7 @@ function kulik_deliver_guest_mail(array $config, array $request): string
     $body = implode("\n", [
         $greeting,
         '',
-        'Thank you for requesting an invitation to the KULIK SYSTEM Private Grand Opening on November 3, 2026. We appreciate your interest in joining our celebration.',
+        'Thank you for requesting an invitation to the KULIK SYSTEM Private Grand Opening on November 5, 2026. We appreciate your interest in joining our celebration.',
         '',
         'We will call you shortly to confirm the details.',
         '',
@@ -204,7 +204,7 @@ function kulik_deliver_crm(array $config, array $request): string
             'company' => $request['company'] ?? '',
             'submitted_at' => $request['submitted_at'] ?? '',
             'source' => 'Event Landing Page',
-            'event_name' => 'KULIK SYSTEM Grand Opening — November 3, 2026',
+            'event_name' => 'KULIK SYSTEM Grand Opening — November 5, 2026',
             'tag' => 'KULIK_EVENT_NOV_03',
             'page_url' => $request['page_url'] ?? '',
             'utm_source' => $request['utm_source'] ?? '',
