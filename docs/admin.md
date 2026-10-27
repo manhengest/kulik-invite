@@ -10,7 +10,7 @@ Credentials: `.env.deploy` (gitignored; copy from `.env.deploy.example`). Same S
 ./scripts/deploy.sh discover   # list remote folders if path is wrong
 ```
 
-Or in Cursor: `/deploy`.
+Or in Cursor: `/deploy` (reviews, commits + pushes to GitHub, then uploads).
 
 Keeps remote `config.php` and `storage/*.jsonl`. Ships:
 
