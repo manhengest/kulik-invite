@@ -1,0 +1,17 @@
+# Deny web access to secrets, logs, and retry helpers.
+<FilesMatch "^(config\.php|config\.example\.php)$">
+  Require all denied
+</FilesMatch>
+
+RedirectMatch 403 ^/storage(/|$)
+RedirectMatch 403 ^/lib(/|$)
+RedirectMatch 403 ^/cron(/|$)
+RedirectMatch 403 ^/\.scratch(/|$)
+RedirectMatch 403 ^/\.agents(/|$)
+
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

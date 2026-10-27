@@ -1,0 +1,36 @@
+#!/usr/bin/env expect
+# Password auth for a one-shot SSH (used to open a ControlMaster).
+# Reads DEPLOY_PASS from the environment. Do not invoke this directly.
+
+if {![info exists env(DEPLOY_PASS)] || $env(DEPLOY_PASS) eq ""} {
+  puts stderr "ssh-pass.exp: DEPLOY_PASS is not set"
+  exit 1
+}
+
+set timeout 45
+set pass $env(DEPLOY_PASS)
+log_user 0
+
+eval spawn -noecho /usr/bin/ssh -o StrictHostKeyChecking=accept-new -o PreferredAuthentications=password -o PubkeyAuthentication=no $argv
+
+expect {
+  -re {(?i)are you sure you want to continue connecting} {
+    send -- "yes\r"
+    exp_continue
+  }
+  -re {(?i)permission denied} {
+    puts stderr "SSH authentication failed"
+    exit 1
+  }
+  -re {(?i)password:} {
+    send -- "$pass\r"
+    exp_continue
+  }
+  eof
+}
+
+lassign [wait] pid spawnid os_error_flag value
+if {$os_error_flag == 0} {
+  exit $value
+}
+exit 1
