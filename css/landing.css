@@ -1,61 +1,44 @@
 @font-face {
-  font-family: "Cormorant Garamond";
-  src: url("../fonts/cormorant-garamond-500.woff2") format("woff2");
-  font-weight: 500;
+  font-family: "Geometria";
+  src: url("../fonts/Geometria-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Cormorant Garamond";
-  src: url("../fonts/cormorant-garamond-600.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Manrope";
-  src: url("../fonts/manrope-400.woff2") format("woff2");
+  font-family: "Geometria";
+  src: url("../fonts/Geometria.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/manrope-500.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Manrope";
-  src: url("../fonts/manrope-600.woff2") format("woff2");
-  font-weight: 600;
+  font-family: "Geometria";
+  src: url("../fonts/Geometria-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --ink: #0c0b0a;
-  --ink-soft: #1a1816;
-  --cream: #f3eee4;
-  --cream-deep: #e8e0d2;
-  --gold: #c9a66b;
-  --gold-deep: #b08a4f;
-  --gold-soft: #d9c4a0;
-  --mist: rgba(243, 238, 228, 0.72);
-  --line: rgba(12, 11, 10, 0.12);
-  --line-light: rgba(243, 238, 228, 0.16);
-  --danger: #8b2e2e;
-  --ok: #2f5d3a;
-  --font-display: "Cormorant Garamond", "Times New Roman", serif;
-  --font-body: "Manrope", "Helvetica Neue", sans-serif;
+  --ink: #0f0f0f;
+  --ink-soft: #181818;
+  --paper: #ffffff;
+  --paper-mute: #f1f1f1;
+  --mist: rgba(255, 255, 255, 0.78);
+  --muted: #616161;
+  --label: #8a8a8a;
+  --line: rgba(15, 15, 15, 0.12);
+  --line-light: rgba(255, 255, 255, 0.16);
+  --field-border: #d5dee7;
+  --danger: #cf0000;
+  --ok: #008000;
+  --font: "Geometria", "Helvetica Neue", Arial, sans-serif;
   --pad: clamp(1.25rem, 4vw, 3.5rem);
   --max: 68rem;
-  --radius: 2px;
+  --radius: 0;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -72,9 +55,10 @@ html {
 
 body {
   margin: 0;
-  color: var(--cream);
-  background: var(--ink);
-  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font);
+  font-weight: 400;
   font-size: 1rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -95,8 +79,9 @@ a {
 h1,
 h2,
 h3 {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: 0.02em;
   line-height: 1.15;
   margin: 0;
 }
@@ -157,12 +142,14 @@ ol {
   display: inline-flex;
   align-items: center;
   flex: none;
-  border: 1px solid var(--gold);
-  color: var(--gold-soft);
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-  font-size: clamp(0.52rem, 1.7vw, 0.65rem);
-  letter-spacing: 0.14em;
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15rem;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -174,6 +161,7 @@ ol {
   align-items: end;
   isolation: isolate;
   overflow: hidden;
+  color: #fff;
 }
 
 .hero__media,
@@ -194,8 +182,8 @@ ol {
 
 .hero__veil {
   background:
-    linear-gradient(90deg, rgba(12, 11, 10, 0.9) 0%, rgba(12, 11, 10, 0.78) 34%, rgba(12, 11, 10, 0.5) 48%, rgba(12, 11, 10, 0) 68%),
-    linear-gradient(180deg, rgba(12, 11, 10, 0.5) 0%, rgba(12, 11, 10, 0.2) 36%, rgba(12, 11, 10, 0.74) 100%);
+    linear-gradient(90deg, rgba(15, 15, 15, 0.9) 0%, rgba(15, 15, 15, 0.78) 34%, rgba(15, 15, 15, 0.5) 48%, rgba(15, 15, 15, 0) 68%),
+    linear-gradient(180deg, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.2) 36%, rgba(15, 15, 15, 0.74) 100%);
 }
 
 .hero__content {
@@ -216,21 +204,22 @@ ol {
 
 .eyebrow {
   margin: 0 0 0.85rem;
-  color: var(--gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22rem;
   text-transform: uppercase;
 }
 
 .eyebrow--dark {
-  color: var(--gold-deep);
+  color: var(--label);
 }
 
 .hero__title {
   max-width: none;
   font-size: clamp(2.05rem, 6.4vw, 4rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   margin-bottom: 0.85rem;
 }
 
@@ -252,13 +241,13 @@ ol {
 }
 
 .hero__body {
-  color: rgba(243, 238, 228, 0.78);
+  color: rgba(255, 255, 255, 0.78);
   margin-bottom: 0.75rem;
 }
 
 .hero__body--soft {
   margin-bottom: 1.5rem;
-  color: var(--gold-soft);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .btn {
@@ -267,43 +256,71 @@ ol {
   justify-content: center;
   gap: 0.55rem;
   min-height: 3.1rem;
-  padding: 0.85rem 1.35rem;
-  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid transparent;
   border-radius: var(--radius);
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15rem;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition:
-    transform 0.25s var(--ease),
-    background-color 0.25s var(--ease),
-    border-color 0.25s var(--ease),
-    color 0.25s var(--ease);
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
 }
 
 .btn--primary {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
 }
 
 .btn--primary:hover,
 .btn--primary:focus-visible {
-  background: var(--gold-soft);
-  transform: translateY(-1px);
+  background: #fff;
+  color: var(--ink);
+}
+
+.btn--primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 15, 15, 0.18);
 }
 
 .btn--ghost {
-  background: transparent;
-  border-color: rgba(12, 11, 10, 0.35);
+  background: #fff;
+  border-color: var(--ink);
   color: var(--ink);
 }
 
 .btn--ghost:hover,
 .btn--ghost:focus-visible {
-  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn--ghost:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 15, 15, 0.18);
+}
+
+.btn--on-dark {
+  background: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+.btn--on-dark:hover,
+.btn--on-dark:focus-visible {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn--on-dark:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
 }
 
 .btn--block {
@@ -311,25 +328,23 @@ ol {
 }
 
 .btn:disabled {
-  opacity: 0.65;
+  opacity: 0.55;
   cursor: wait;
-  transform: none;
 }
 
 .section {
   padding: clamp(3.5rem, 8vw, 6rem) 0;
 }
 
-.section--cream {
-  background:
-    linear-gradient(180deg, #f7f2e9 0%, var(--cream) 55%, #efe7d8 100%);
+.section--cream,
+.section--light {
+  background: var(--paper);
   color: var(--ink);
 }
 
-.section--dark {
-  background:
-    radial-gradient(80% 60% at 80% 0%, rgba(201, 166, 107, 0.12), transparent 55%),
-    var(--ink);
+.section--mute {
+  background: var(--paper-mute);
+  color: var(--ink);
 }
 
 .section__inner {
@@ -383,7 +398,7 @@ ol {
   width: 2.75rem;
   height: 2.75rem;
   margin-bottom: 0.7rem;
-  color: var(--gold-deep);
+  color: var(--ink);
 }
 
 .why__icon svg {
@@ -393,14 +408,14 @@ ol {
 }
 
 .why__item h3 {
-  font-family: var(--font-body);
+  font-family: var(--font);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.01em;
 }
 
 .why__item p {
-  color: rgba(12, 11, 10, 0.72);
+  color: var(--muted);
   max-width: 22rem;
 }
 
@@ -408,7 +423,7 @@ ol {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  color: var(--cream);
+  color: #fff;
   background: var(--ink);
   min-height: clamp(28rem, 72vw, 40rem);
   display: grid;
@@ -435,16 +450,16 @@ ol {
   background:
     linear-gradient(
       180deg,
-      rgba(12, 11, 10, 0.42) 0%,
-      rgba(12, 11, 10, 0.08) 38%,
-      rgba(12, 11, 10, 0.55) 100%
+      rgba(15, 15, 15, 0.42) 0%,
+      rgba(15, 15, 15, 0.08) 38%,
+      rgba(15, 15, 15, 0.55) 100%
     ),
     linear-gradient(
       90deg,
       var(--ink) 0%,
-      rgba(12, 11, 10, 0.88) 28%,
-      rgba(12, 11, 10, 0.4) 48%,
-      rgba(12, 11, 10, 0.1) 68%,
+      rgba(15, 15, 15, 0.88) 28%,
+      rgba(15, 15, 15, 0.4) 48%,
+      rgba(15, 15, 15, 0.1) 68%,
       transparent 86%
     );
 }
@@ -476,26 +491,27 @@ ol {
   grid-template-columns: auto 1fr;
   gap: 1rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--line-light);
+  border-bottom: 1px solid var(--line);
 }
 
 .expect__num {
-  font-family: var(--font-display);
+  font-family: var(--font);
   font-size: 1.5rem;
-  color: var(--gold);
+  font-weight: 300;
+  color: var(--ink);
   line-height: 1;
   padding-top: 0.2rem;
 }
 
 .expect__list h3 {
-  font-family: var(--font-body);
+  font-family: var(--font);
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.3rem;
 }
 
 .expect__list p {
-  color: var(--mist);
+  color: var(--muted);
 }
 
 .closing__grid {
@@ -517,7 +533,7 @@ ol {
 }
 
 .invite__lead {
-  color: rgba(12, 11, 10, 0.7);
+  color: var(--muted);
   margin-bottom: 1.75rem;
   max-width: 28rem;
 }
@@ -534,15 +550,17 @@ ol {
 
 .field label {
   font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(12, 11, 10, 0.65);
+  color: var(--label);
 }
 
 .optional {
   text-transform: none;
   letter-spacing: 0;
-  color: rgba(12, 11, 10, 0.45);
+  font-weight: 400;
+  color: var(--muted);
 }
 
 .field input,
@@ -550,17 +568,17 @@ ol {
   width: 100%;
   min-height: 3.1rem;
   padding: 0.85rem 1rem;
-  border: 1px solid rgba(12, 11, 10, 0.18);
+  border: 1px solid var(--field-border);
   border-radius: var(--radius);
-  background: var(--ink-soft);
-  color: var(--cream);
+  background: var(--paper);
+  color: var(--ink);
   font: inherit;
   appearance: none;
 }
 
 .field select {
-  background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%),
-    linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
   background-position:
     calc(100% - 1.15rem) 50%,
     calc(100% - 0.85rem) 50%;
@@ -572,13 +590,14 @@ ol {
 }
 
 .field input::placeholder {
-  color: rgba(243, 238, 228, 0.45);
+  color: var(--muted);
 }
 
 .field input:focus,
 .field select:focus {
-  outline: 2px solid var(--gold);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(15, 15, 15, 0.1);
 }
 
 .hp {
@@ -598,23 +617,23 @@ ol {
 }
 
 .form-status[data-state="ok"] {
-  background: rgba(47, 93, 58, 0.12);
+  background: rgba(0, 128, 0, 0.1);
   color: var(--ok);
 }
 
 .form-status[data-state="error"] {
-  background: rgba(139, 46, 46, 0.1);
+  background: rgba(207, 0, 0, 0.08);
   color: var(--danger);
 }
 
 .privacy-note {
   font-size: 0.82rem;
-  color: rgba(12, 11, 10, 0.55);
+  color: var(--muted);
   text-align: center;
 }
 
 .location__address {
-  color: rgba(12, 11, 10, 0.72);
+  color: var(--muted);
   margin-bottom: 1.25rem;
 }
 
@@ -640,20 +659,23 @@ ol {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  color: rgba(12, 11, 10, 0.8);
+  color: var(--ink);
 }
 
 .location__meta img {
   width: 1.35rem;
   height: 1.35rem;
   flex: none;
+  color: var(--ink);
 }
 
+/* Dark band so the white wordmark still reads */
 .site-footer {
   padding: 3rem var(--pad) 2.5rem;
   text-align: center;
   border-top: 1px solid var(--line-light);
   background: var(--ink);
+  color: #fff;
 }
 
 .site-footer__line {
@@ -725,13 +747,13 @@ ol {
   }
 
   .hero .eyebrow {
-    letter-spacing: 0.1em;
-    font-size: 0.64rem;
+    letter-spacing: 0.16rem;
+    font-size: 0.6875rem;
   }
 
   .hero__veil {
     background:
-      linear-gradient(180deg, rgba(12, 11, 10, 0.28) 0%, rgba(12, 11, 10, 0.18) 26%, rgba(12, 11, 10, 0.78) 40%, rgba(12, 11, 10, 0.92) 100%);
+      linear-gradient(180deg, rgba(15, 15, 15, 0.28) 0%, rgba(15, 15, 15, 0.18) 26%, rgba(15, 15, 15, 0.78) 40%, rgba(15, 15, 15, 0.92) 100%);
   }
 
   .hero__media img {
@@ -777,8 +799,8 @@ ol {
       90deg,
       var(--ink) 0%,
       var(--ink) 34%,
-      rgba(12, 11, 10, 0.72) 44%,
-      rgba(12, 11, 10, 0.22) 58%,
+      rgba(15, 15, 15, 0.72) 44%,
+      rgba(15, 15, 15, 0.22) 58%,
       transparent 74%
     );
   }
@@ -810,7 +832,7 @@ ol {
 
   .expect__list li {
     padding: 0 1.1rem 0;
-    border-left: 1px solid var(--line-light);
+    border-left: 1px solid var(--line);
   }
 
   .expect__list li:first-child {

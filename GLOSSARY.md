@@ -15,3 +15,7 @@ _Avoid_: Lead, RSVP, registration, signup, form submission
 **Delivery**:
 An attempt to send one Invitation Request to a channel (email, CRM, or Telegram). Each channel has its own status: `pending`, `sent`, or `failed`.
 _Avoid_: Notification, sync, webhook call
+
+**Storefront**:
+The public KULIK SYSTEM shop at kuliksystem.us. The event page borrows its type, color, and controls.
+_Avoid_: Prod site, main site, the website
