@@ -140,6 +140,7 @@ site_tar() {
     -cf - \
     index.html \
     .htaccess \
+    robots.txt \
     submit.php \
     config.example.php \
     css \
@@ -185,7 +186,7 @@ upload_site() {
       done
     fi
     # Swap: move current aside only for files we ship; leave unknown server files alone.
-    for item in index.html .htaccess submit.php config.example.php css js fonts assets lib cron; do
+    for item in index.html .htaccess robots.txt submit.php config.example.php css js fonts assets lib cron; do
       if [ -e \"\$item\" ]; then
         mkdir -p .deploy-old
         mv \"\$item\" .deploy-old/
