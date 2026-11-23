@@ -27,7 +27,7 @@ return [
     'crm_token' => '',
     'kommo_pipeline_id' => 0,
     'kommo_status_id' => 0,
-    'kommo_tag' => 'KULIK_EVENT_NOV_03',
+    'kommo_tag' => 'KULIK_EVENT_NOV_27',
 
     // Telegram stays off unless both are set
     'telegram_bot_token' => '',

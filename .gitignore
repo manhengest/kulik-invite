@@ -3,3 +3,4 @@ config.php
 storage/requests.jsonl
 storage/*.tmp
 .DS_Store
+.cursor/plans
